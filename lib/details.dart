@@ -33,6 +33,67 @@ class DetailsScreen extends StatelessWidget {
             ),
           ],
         ),
+        body: Column(
+          children: [
+            Text(
+              'ascancsklacsn',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: Colors.black54,
+                  ),
+            ),
+            SizedBox(height: 4),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.star_border_rounded,
+                  color: Colors.black54,
+                ),
+                SizedBox(width: 4),
+                Text(
+                  '4.9 / 5.0 (150 Reviews)',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.black54,
+                      ),
+                ),
+              ],
+            ),
+            Spacer(),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        'Colors',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: Colors.black54,
+                            ),
+                      ),
+                      SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          4,
+                          (index) => Container(
+                            height: 25,
+                            margin: EdgeInsets.symmetric(horizontal: 4),
+                            width: 25,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: colors[index],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Spacer(),
+          ],
+        ),
       ),
     );
   }
