@@ -94,6 +94,56 @@ class DetailsScreen extends StatelessWidget {
             Spacer(),
           ],
         ),
+        bottomNavigationBar: Row(
+          children: [
+            Expanded(
+              child: Container(
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Price',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: Colors.black54,
+                            ),
+                      ),
+                      Text(
+                        'Rs, 1499.00',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              color: Colors.black54,
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Container(
+                height: 70,
+                color: Color(0xff26B4D6),
+                child: Center(
+                  child: Text(
+                    'Buy now',
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
