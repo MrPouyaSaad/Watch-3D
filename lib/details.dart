@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
 
+  static const List<Color> colors = [
+    Colors.black54,
+    Colors.brown,
+    Colors.blueGrey,
+    Colors.amber,
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
