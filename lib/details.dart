@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class DetailsScreen extends StatelessWidget {
+class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key});
 
   static const List<Color> colors = [
@@ -9,6 +10,39 @@ class DetailsScreen extends StatelessWidget {
     Colors.blueGrey,
     Colors.amber,
   ];
+
+  @override
+  State<DetailsScreen> createState() => _DetailsScreenState();
+}
+
+class _DetailsScreenState extends State<DetailsScreen> {
+  late final WebViewController _controller;
+  @override
+  void initState() {
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(Colors.transparent)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            // Update loading bar.
+          },
+          onPageStarted: (String url) {},
+          onPageFinished: (String url) {},
+          onWebResourceError: (WebResourceError error) {},
+          onNavigationRequest: (NavigationRequest request) {
+            if (request.url
+                .startsWith('https://elegant-tanuki-0787ed.netify.app/')) {
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse('https://elegant-tanuki-0787ed.netify.app/'));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,6 +69,13 @@ class DetailsScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
+            SizedBox(
+              height: 350,
+              width: double.infinity,
+              child: WebViewWidget(
+                controller: _controller,
+              ),
+            ),
             Text(
               'ascancsklacsn',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
@@ -81,7 +122,7 @@ class DetailsScreen extends StatelessWidget {
                             width: 25,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: colors[index],
+                              color: DetailsScreen.colors[index],
                             ),
                           ),
                         ),
